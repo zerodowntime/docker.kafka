@@ -1,0 +1,6 @@
+[template]
+src = "server.properties"
+dest = "/opt/kafka/config/server.properties"
+keys = [
+  "/kafka"
+]
