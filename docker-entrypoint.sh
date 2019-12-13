@@ -30,3 +30,4 @@ cat /opt/kafka/config/server.properties
 
 # start kafka
 exec su-exec kafka /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
+
