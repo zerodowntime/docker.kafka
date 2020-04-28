@@ -40,10 +40,10 @@ metadata:
   labels:
     app: kf
 spec:
+  type: NodePort
   ports:
-    - port: 9092
-      name: kafka
-  clusterIP: None
+    - name: kafka
+      port: 9092
   selector:
     app: kf
 ---
@@ -56,7 +56,7 @@ spec:
     matchLabels:
       app: kf
   serviceName: kf-s
-  replicas: 4
+  replicas: 3
   updateStrategy:
     type: RollingUpdate
   podManagementPolicy: OrderedReady
@@ -69,11 +69,11 @@ spec:
       containers:
         - name: kubernetes-kafka
           imagePullPolicy: Never
-          image: "kafka"
+          image: "zerodowntime/kafka"
           resources:
             requests:
-              memory: "100Mi"
-              cpu: "0.1"
+              memory: "500Mi"
+              cpu: "0.5"
           # lifecycle:
           #   postStart:
           #     exec:
@@ -107,5 +107,3 @@ spec:
         resources:
           requests:
             storage: 100Mi
-          
-              

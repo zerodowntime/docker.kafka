@@ -5,8 +5,8 @@ export HOST=`hostname -s`
 export DOMAIN=`hostname -d`
 export KAFKA_LOG_DIR="/var/log/kafka"
 
-export ZOOKEEPER_CLIENT_SERVICE="10.102.83.241"
-export ZOOKEEPER_CLIENT_PORT="2181"
+export ZOOKEEPER_CLIENT_SERVICE="$ZK_CS_PORT_2181_TCP_ADDR"
+export ZOOKEEPER_CLIENT_PORT="$ZK_CS_SERVICE_PORT_CLIENT"
 
 # set ownership
 chown -R kafka:root /opt/kafka/
@@ -30,4 +30,3 @@ cat /opt/kafka/config/server.properties
 
 # start kafka
 exec su-exec kafka /opt/kafka/bin/kafka-server-start.sh /opt/kafka/config/server.properties
-
